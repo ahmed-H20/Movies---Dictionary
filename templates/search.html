@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SEARCH
+{% endblock %}
+
+{% block main %}
+
+<form action="/search">
+    <input class="form-control" name="title" placeholder="Search" type="text">
+    <button class="btn btn-primary mb-2" type="submet">Search</button>
+</form>
+    <div id="search">
+            <ul class="list-group">
+            {% for row in data %}
+                <li class="list-group-item"><span>{{ row.title }}</span>
+                    <form action="/details">
+                        <input name="title" type="hidden" value="{{ row.title }}">
+                        <button type="submit">Details</button>
+                    </form>
+                    <form action="/fav">
+                        <input name="title" type="hidden" value="{{ row.title }}">
+                        <button type="submit">Add TO Favorites</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

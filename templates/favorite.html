@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SEARCH
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+        <h2>Favorites List</h2>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td scope="row">{{ row.favorites }}</td>
+                        <td>
+                            <form action="/details">
+                                <input name="title" type="hidden" value="{{ row.favorites }}">
+                                <button type="submit" class="btn btn-outline-success">Details</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/delete">
+                                <input name="title" type="hidden" value="{{ row.favorites }}">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

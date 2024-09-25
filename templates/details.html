@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    DETAILS
+{% endblock %}
+
+{% block main %}
+<div class="container">
+<div class="section">
+
+    <h2>Details</h2>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">YEAR</th>
+                <th scope="col">Episodes</th>
+                <th scope="col">stars</th>
+                <th scope="col">Writer</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Genres</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for row in show %}
+                <tr>
+                    <td scope="row"><ul>{{ row.title }}</ul></td>
+                    <td><ul>{{ row.year }}</ul></td>
+                    <td><ul>{{ row.episodes }}</ul></td>
+                    <td>
+                        {% for star in stars %}
+                        <ul>
+                            <form action="/star">
+                                <input name="star" type="hidden" value="{{ star["name"] }}">
+                                <button type="submit" class="btn btn-outline-secondary">{{ star["name"] }}</button>
+                            </form>
+                        </ul>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for writer in writers %}
+                        <ul>
+                            <form action="/writer">
+                                <input name="writer" type="hidden" value="{{ writer["name"] }}">
+                                <button type="submit" class="btn btn-outline-secondary">{{ writer["name"] }}</button>
+                            </form>
+                        </ul>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <ul>
+                            {{ rating }}
+                        </ul>
+                    </td>
+                    <td>
+                        {% for row in genres %}
+                            <ul>
+                                {{ row["genre"] }}
+                            </ul>
+                        {% endfor %}
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+
+{% endblock %}

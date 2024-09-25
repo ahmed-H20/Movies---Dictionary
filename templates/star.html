@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    DETAILS
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+        {% for row in data %}
+            <h2>name:{{ row.name }}</h2>
+            <h3>Birth:{{ row.birth }}</h3>
+            <h3>Age:{{ 2023-row.birth }}</h3>
+            <br>
+            <h3>Shows:</h3>
+            {% for row in shows %}
+            <ul>
+                <form action="/details">
+                    <input name="title" type="hidden" value="{{ row["title"] }}">
+                    <button type="submit" class="btn btn-outline-secondary">{{ row["title"] }}</button>
+                </form>
+            </ul>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

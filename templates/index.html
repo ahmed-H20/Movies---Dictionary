@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    HOME
+{% endblock %}
+
+{% block main %}
+
+<h1 style="margin-top:5%"><span class="auto_type2"></span></h1>
+<h2>you can <span class="auto_type"></span></h2>
+<br><br>
+<form action="/search">
+    <input class="form-control" name="title" placeholder="Search" type="text">
+    <button class="btn btn-primary mb-2" type="submet">Search</button>
+</form>
+
+
+{% endblock %}
